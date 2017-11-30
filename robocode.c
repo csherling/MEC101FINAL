@@ -5,7 +5,7 @@
 
 const int sensorTop_Trig = 4; // insert pin trig pin on Top ultrasonic sensor is connected to 
 const int sensorTop_Echo = 3 ;// insert pin that echo pin on Bottom ultrasonic sensor connected to 
-const int sensorMax = 75; // max distance for ultrasonic sensor
+const int sensorMax = 150; // max distance for ultrasonic sensor
 const int sensorBottom_Trig = 13;
 const int sensorBottom_Echo = 12;
 
@@ -51,8 +51,8 @@ void loop() {
  Serial.println(distanceTop);
  Serial.print("BOTTOM ");
  Serial.println(distanceBottom);
-if(x>=4 && x<=10 && distanceTop != 0){
-  while ((distanceBottom<25 || distanceBottom>35) && distanceTop != 0){
+if(x>=2 && x<=6 && distanceTop != 0){
+  while ((distanceBottom<80 || distanceBottom>90) && distanceTop != 0){
     Serial.println("While-in");
     distanceTop = sonar[0].ping_cm();       //reads the value from the top sensor
     distanceBottom = sonar[1].ping_cm();   //reads the value from the bottom sensor
@@ -112,10 +112,10 @@ void reverse() { // defines a function that makes both wheels go backwards
 }
 
 void panMotion() {                           //defines function that makes the robot turn in a cirlce
-  digitalWrite(motorOne_InputOne, LOW);
-  digitalWrite(motorOne_InputTwo, HIGH);
-  digitalWrite(motorTwo_InputOne, HIGH);
-  digitalWrite(motorTwo_InputTwo, LOW);
+  digitalWrite(motorOne_InputOne, HIGH);
+  digitalWrite(motorOne_InputTwo, LOW);
+  digitalWrite(motorTwo_InputOne, LOW);
+  digitalWrite(motorTwo_InputTwo, HIGH);
   delay(10);
 }
 
@@ -129,4 +129,3 @@ void stopBot() {                            //defines function that stops all th
 }
 
 void shootyShoot() {}
-
